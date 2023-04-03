@@ -1,0 +1,14 @@
+.item {
+    padding: 4px 12px;
+
+    &:hover {
+        .link {
+            border-bottom-color: var(--color-primary);
+        }
+    }
+}
+
+.link {
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.1s ease;
+}

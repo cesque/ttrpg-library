@@ -1,0 +1,27 @@
+.item {
+    background: var(--color-background);
+    padding: 4px 12px;
+    border-radius: 4px;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+
+    &:hover {
+        background: var(--color-primary);
+        color: var(--color-base-secondary);
+
+        .link {
+            color: var(--color-base-secondary);
+        }
+    }
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}

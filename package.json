@@ -3,14 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.304.0",
+    "classnames": "^2.3.2",
+    "js-cookie": "^3.0.1",
     "next": "13.2.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sass": "^1.60.0"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^7.0.0"
   }
 }
