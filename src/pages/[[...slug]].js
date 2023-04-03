@@ -43,8 +43,6 @@ export async function getServerSideProps(context) {
 }
 
 export default function Page({ path, files, folders }) {
-    let upPath = path.slice(0, path.length - 1)
-
     let title = 'the tabletop library'
     if(path.length) {
         title = path.map(x => x.toLowerCase()).join(' / ') + ' - ' + title

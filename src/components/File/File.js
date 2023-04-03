@@ -14,7 +14,7 @@ export default function File({ file }) {
     let link = isAuthenticated ? `/api/download/${ file.name }` : null
 
     function copyToClipboard() {
-        window.navigator.clipboard.writeText(`${ window.location.origin }${ link }`)
+        window.navigator.clipboard.writeText(`${ window.location.origin }/api/download/${ encodeURIComponent(`${ file.name }`) }`)
     }
 
     let icon = isAuthenticated ? <a className={ styles.linkIcon } onClick={ copyToClipboard }><LinkIcon /></a> : null
