@@ -2,7 +2,7 @@ import styles from './FileListItem.module.scss'
 
 import classNames from 'classnames'
 
-export default function FileListItem({ className, link, download, children }) {
+export default function FileListItem({ className, link, download, icon, children }) {
     let conditionalClasses = {
         [styles.itemWithLink]: link != null
     }
@@ -11,5 +11,7 @@ export default function FileListItem({ className, link, download, children }) {
         <a className={ classNames(styles.link, className.link) } href={ link } download={ download }>
             { children }
         </a>
+
+        { icon }
     </li>
 }

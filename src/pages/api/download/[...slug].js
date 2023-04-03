@@ -1,6 +1,6 @@
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3'
 import { authenticate } from '../authenticate'
-import { useRouter } from 'next/router'
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 
 const client = new S3Client({
     region: 'eu-west-1',
@@ -10,12 +10,6 @@ const client = new S3Client({
     }
 })
 
-export const config = {
-    api: {
-        responseLimit: false,
-    }
-}
-
 export default async function handler(req, res) {
     if(authenticate(req)) {
         let command = new GetObjectCommand({
@@ -23,12 +17,17 @@ export default async function handler(req, res) {
             Key: `${ req.query.slug.join('/') }`,
         })
         
-        let response = await client.send(command)
+        let url = await getSignedUrl(client, command, { expiresIn: 3600 })
+
+        res.redirect(302, url)
+
+        // can't do this because of vercel serverless limits
+        // let response = await client.send(command)
         
-        res.setHeader('Content-Type',response.ContentType)
+        // res.setHeader('Content-Type',response.ContentType)
         // res.setHeader('Content-Disposition', `attachment; filename=${ filename }`)
 
-        response.Body.pipe(res)
+        // response.Body.pipe(res)
     } else {
         let params = new URLSearchParams()
         params.set('redirect', req.url)

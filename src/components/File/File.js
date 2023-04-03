@@ -4,6 +4,8 @@ import FileListItem from '../FileListItem/FileListItem'
 import { useContext } from 'react'
 import { AuthenticationContext } from '../AuthenticationContext'
 
+import LinkIcon from './link.svg'
+
 export default function File({ file }) {
     let { isAuthenticated } = useContext(AuthenticationContext)
 
@@ -11,5 +13,13 @@ export default function File({ file }) {
 
     let link = isAuthenticated ? `/api/download/${ file.name }` : null
 
-    return <FileListItem className={ styles } link={ link }>{ filename }</FileListItem>
+    function copyToClipboard() {
+        window.navigator.clipboard.writeText(`${ window.location.origin }${ link }`)
+    }
+
+    let icon = <a className={ styles.linkIcon } onClick={ copyToClipboard }><LinkIcon /></a>
+
+    return <FileListItem className={ styles } link={ link } icon={ icon }>
+        { filename }
+    </FileListItem>
 }
