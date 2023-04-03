@@ -16,7 +16,7 @@ export default function Login() {
         if(router.query.redirect) {
             return <a className={ styles.return } href={ router.query.redirect }>Return</a>
         } else {
-            return <button className={ styles.return } onClick={ () => window.history.back() }>Return</button>
+            return <a className={ styles.return } href="/">Return</a>
         }
     }
 
