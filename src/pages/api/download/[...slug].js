@@ -10,6 +10,12 @@ const client = new S3Client({
     }
 })
 
+export const config = {
+    api: {
+        responseLimit: false,
+    }
+}
+
 export default async function handler(req, res) {
     if(authenticate(req)) {
         let command = new GetObjectCommand({
