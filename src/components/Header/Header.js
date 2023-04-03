@@ -18,6 +18,6 @@ export default function Header({ path }) {
     return <h2 className={ styles.header }>
         { getLoginLink() }
         <a className={ styles.part } href="/">ttrpgs</a>
-        { path.map((part, index) => <a className={ styles.part } href={ `/${ path.slice(0, index + 1).join('/') }` }>{ part }</a>) }
+        { path.map((part, index) => <a className={ styles.part } href={ `/${ path.slice(0, index + 1).join('/') }` } key={ index }>{ part }</a>) }
     </h2>
 }

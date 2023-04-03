@@ -10,7 +10,6 @@ export function AuthenticationProvider({ children }) {
             let response = await fetch('/api/authenticate')
             let json = await response.json()
 
-            console.log(json)
             setIsAuthenticated(json.success)
         } catch(e) {
             console.log(e)

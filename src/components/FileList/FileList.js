@@ -6,11 +6,11 @@ import Folder from '../Folder/Folder'
 export default function FileList({ files, folders }) {
     return <ul className={ styles.list }>
         {
-            folders.map(folder => <Folder folder={ folder } />)
+            folders.map((folder, index) => <Folder folder={ folder } key={ index } />)
         }
 
         {
-            files.map(file => <File file={ file } />)
+            files.map((file, index) => <File file={ file } key={ index } />)
         }
     </ul>
 }
