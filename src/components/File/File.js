@@ -17,7 +17,7 @@ export default function File({ file }) {
         window.navigator.clipboard.writeText(`${ window.location.origin }${ link }`)
     }
 
-    let icon = <a className={ styles.linkIcon } onClick={ copyToClipboard }><LinkIcon /></a>
+    let icon = isAuthenticated ? <a className={ styles.linkIcon } onClick={ copyToClipboard }><LinkIcon /></a> : null
 
     return <FileListItem className={ styles } link={ link } icon={ icon }>
         { filename }
