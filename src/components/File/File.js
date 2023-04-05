@@ -11,10 +11,12 @@ export default function File({ file }) {
 
     let filename = file.name.split('/').slice(-1)
 
-    let link = isAuthenticated ? `/api/download/${ file.name }` : null
+    let name = encodeURIComponent(file.name)
+
+    let link = isAuthenticated ? `/api/download/${ name }` : null
 
     function copyToClipboard() {
-        window.navigator.clipboard.writeText(`${ window.location.origin }/api/download/${ encodeURIComponent(`${ file.name }`).replace(/%20/g, '%2B') }`)
+        window.navigator.clipboard.writeText(`${ window.location.origin }/api/download/${ name }`)
     }
 
     let icon = isAuthenticated ? <a className={ styles.linkIcon } onClick={ copyToClipboard }><LinkIcon /></a> : null
